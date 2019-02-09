@@ -1,0 +1,1 @@
+gst-launch-1.0 -v v4l2src device=/dev/video0 ! "video/x-raw,width=640,height=480,framerate=30/1" ! x264enc speed-preset=1 tune=zerolatency bitrate=2048 ! rtph264pay ! udpsink host=10.50.26.5 port=5004
