@@ -1,0 +1,2 @@
+# Put the following lines in the crontab file after using the command: crontab -e
+@reboot ( sleep 60; sh /usr/local/bin/pseyestartscript & )

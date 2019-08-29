@@ -1,0 +1,2 @@
+gst-launch-1.0 udpsrc port=5801 ! "application/x-rtp, clock-rate=(int)90000, media=(string)video, encoding-name=VP8" ! rtpvp8depay ! decodebin ! tee name=t t. ! queue ! autovideosink t. ! queue ! video/x-raw,width=640,height=480,framerate=30/1 ! x264enc speed-preset=1 tune=zerolatency bitrate=1024 ! mp4mux ! filesink location=%time:~0,2%_%time:~3,2%_%time:~6,2%__%date:~4,2%_%date:~7,2%_%date:~10,4%_5801.mp4
+pause

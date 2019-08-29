@@ -1,0 +1,4 @@
+#!/bin/bash
+# Put this file in /usr/local/bin/
+gst-launch-1.0 -e v4l2src device=/dev/video0 ! "video/x-raw, width=640, height=480, framerate=30/1" ! nvvidconv ! "video/x-raw(memory:NVMM)" ! nvv4l2vp8enc bitrate=1000000 ! queue ! rtpvp8pay ! udpsink host=10.50.26.5 port=5801 &
+gst-launch-1.0 -e v4l2src device=/dev/video1 ! "video/x-raw, width=640, height=480, framerate=30/1" ! nvvidconv ! "video/x-raw(memory:NVMM)" ! nvv4l2vp8enc bitrate=1000000 ! queue ! rtpvp8pay ! udpsink host=10.50.26.5 port=5802 &

@@ -1,5 +1,5 @@
 # gstreamer-scripts
 Scripts for gstreamer
 
-`sudo chmod 755 pseyestart`
-`sudo update-rc.d pseyestart defaults`
+`sudo chmod +x pseyestartscript`
+`crontab -e`
