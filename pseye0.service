@@ -1,0 +1,15 @@
+[Unit]
+Description=Cam0
+After=network.target auditd.service
+
+[Service]
+ExecStart=/usr/bin/gst-launch-1.0 -e v4l2src device=/dev/video0 ! "video/x-raw, width=640, height=480, framerate=30/1" ! nvvidconv ! "video/x-raw(memory:NVMM)" ! nvv4l2vp8enc bitrate=1000000 ! queue ! rtpvp8pay ! udpsink host=10.50.26.5 port=5801
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=0.1
+Type=notify
+TimeoutStartSec=infinity
+
+[Install]
+WantedBy=multi-user.target
